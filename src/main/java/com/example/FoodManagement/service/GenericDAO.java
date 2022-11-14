@@ -1,10 +1,9 @@
-package com.example.FoodManagement.repository;
+package com.example.FoodManagement.service;
 
 import com.example.FoodManagement.models.SuperClass;
-
 import java.util.List;
 
-public interface GenericDAO<T extends SuperClass> {
+public interface GenericDAO<T> {
 
 	//CRUD Operations
 	
@@ -12,9 +11,9 @@ public interface GenericDAO<T extends SuperClass> {
 	
 	public T get(int id);
 	
-	public boolean add(T t);
+	public T add(T t);
 	
-	public boolean update(int id, T t);
+	public T update(T t);
 	
 	public boolean delete(int id);
 	

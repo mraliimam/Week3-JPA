@@ -1,12 +1,13 @@
 package com.example.FoodManagement.controllers;
 
 import com.example.FoodManagement.models.SuperClass;
-import com.example.FoodManagement.repository.GenericDAOImpl;
+import com.example.FoodManagement.service.GenericDAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public class GenericController<T extends SuperClass> {
+public class GenericController<T> {
 
     private GenericDAOImpl<T> genericDAO;
 
@@ -25,13 +26,13 @@ public class GenericController<T extends SuperClass> {
     }
 
     @PostMapping("/addEntity")
-    public boolean addEntity(@RequestBody T t){
+    public T addEntity(@RequestBody T t){
         return genericDAO.add(t);
     }
 
     @PutMapping("/updateEntity")
-    public boolean updateEntity(@RequestBody T t){
-        return genericDAO.update(t.getId(),t);
+    public T updateEntity(@RequestBody T t){
+        return genericDAO.update(t);
     }
 
     @DeleteMapping("/deleteEntity/{id}")
